@@ -1,0 +1,16 @@
+{
+  "name": "NodeServCliSkeleton",
+  "version": "1.0.0",
+  "description": "Client-Server Application Skeleton with MongoDB for university labs",
+  "main": "server.js",
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.13.4",
+    "mongodb": "^3.0.0"
+  },
+  "scripts": {
+    "app": "node server.js"
+  }
+}
