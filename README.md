@@ -34,7 +34,7 @@ $ npm run app
 Это работает: http://localhost:3000
 Коллекция my-collection создана
 ```
-Проверьте браузер
+
 
 ISC
 ----
