@@ -59,12 +59,13 @@ MongoClient.connect('mongodb://localhost:27017/', {
             return console.log(err)
         }
         db_ = database.db('mongodb');
+        /* 
+        * Здесь можете сделать импорт базы данных
+        * который будет сделан единожды, при первом запуске сервера
+        */
         db_.collection('my-collection').countDocuments(function(err, count){
             if(!err && count === 0){
-                /* 
-                * Здесь можете сделать импорт базы данных
-                * который будет сделан единожды, при первом запуске сервера
-                */
+
 
                 // Вставка в коллекцию объекта data (Коллекция автоматически создается при объявлении)
                 var data = {type:'string', message:'Приветики пистолетики!'};
