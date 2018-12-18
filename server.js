@@ -60,24 +60,23 @@ MongoClient.connect('mongodb://localhost:27017/', {
         }
         db_ = database.db('mongodb');
         db_.collection('my-collection').countDocuments(function(err, count){
-            if(!err && count !== 0){
-                db_.collection('my-collection').drop();
+            if(!err && count === 0){
+                /* 
+                * Здесь можете сделать импорт базы данных
+                * который будет сделан единожды, при первом запуске сервера
+                */
+
+                // Вставка в коллекцию объекта data (Коллекция автоматически создается при объявлении)
+                var data = {type:'string', message:'Приветики пистолетики!'};
+                db_.collection('my-collection').insertOne(data, function(err, result){
+                    if(err){
+                        console.log(err);
+                        return res.sendStatus(500);
+                    }
+                    console.log('Коллекция my-collection создана');
+                });
             }
         });
-        /* 
-        * Здесь можете сделать импорт базы данных
-        */
-
-        // Вставка в коллекцию объекта data (Коллекция автоматически создается при объявлении)
-        var data = {type:'string', message:'Приветики пистолетики!'};
-        db_.collection('my-collection').insertOne(data, function(err, result){
-            if(err){
-                console.log(err);
-                return res.sendStatus(500);
-            }
-            console.log('Коллекция my-collection создана');
-        });
-
 });
 
 // Редирект на 404, после - не должно быть GET-ов
