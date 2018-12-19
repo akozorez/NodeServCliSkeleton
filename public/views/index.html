@@ -2,46 +2,33 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Application</title>    
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-		}
-		body {
-			font-family: Verdana, sans-serif;
-			text-align: center;
-			margin: 0 auto 0px auto;
-			font-size: .8em;
-		}
-		h1 {
-			margin: 0px 0px 0px 0px;
-			background: #2c3e50;
-			color: #fff;
-			padding: 75px;
-		}
-		p {
-			margin: 20px;
-			font-size: 16px;
-		}
-		a{
-			display: inline-block;
-			margin: 10px 0px 0px 0px;
-			font-size: 16px;
-			padding: 12px 25px;
-			color: #2c3e50;
-			border-radius: 2px;
-			text-decoration: none;
-			border: 1px solid;
-		}
-    </style>
+    <meta charset="UTF-8">
+    <title>Главная - NodeServCliSkeleton</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-	<h1>NodeServCliSkeleton</h1>
-	<div id="app"></div>
-	<script src="client.js"></script>
+<body data-page-name="homepage">
+    <nav class="menu">
+        <ul>
+            <li><a href="/">Главная страница</a></li>
+            <% if(!logined){ %>
+                <li><a href="/register">Регистрация</a></li>
+                <li><a href="/login">Авторизация</a></li>
+            <% }else{ %>
+                    <li><a href="/logout">Выйти</a></li>
+            <% } %>
+        </ul>
+    </nav>
+    <h1>Главная страница</h1>
+    <div id="app">
+        <% if(errors){ %>
+            <p class="error-msg <%= !success?'bad':'success'%>">
+                <%= errors %>
+            </p>
+        <% } %>
+    </div>
+    <script src="client.js"></script>
 </body>
 
 </html>

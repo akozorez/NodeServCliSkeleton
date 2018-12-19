@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    font-size: .8em
+}
+
+h1 {
+    margin: 0 0 0 0;
+    background-color: #02b875;
+    color: rgba(19, 20, 24, 0.75);
+    padding: 75px;
+    text-transform: lowercase
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+    float: left
+}
+
+p {
+    margin: 20px;
+    font-size: 16px
+}
+
+a {
+    display: inline-block;
+    margin: 0 0 0 25px;
+    font-size: 16px;
+    padding: 20px 0;
+    color: rgba(19, 20, 24, 0.75);
+    font-weight:600;
+    text-decoration: none;
+    letter-spacing: -1px;
+    text-transform: lowercase
+}
+
+.container {
+    padding: 16px;
+    background-color: white
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 15px 0;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    text-indent: 15px
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: #ddd;
+    outline: none
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px
+}
+
+.actionbtn {
+    background-color: #02b875;
+    color: white;
+    padding: 16px 0;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: .9;
+    font-weight: 600
+}
+
+.actionbtn:hover {
+    opacity: 1
+}
+
+.error-msg {
+    margin: 15px 0;
+    font-weight: 600
+}
+
+.bad {
+    color: #bd081c
+}
+
+.success {
+    color: #09b83e
+}

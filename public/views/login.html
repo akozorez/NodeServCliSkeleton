@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация - NodeServCliSkeleton</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page-name="login">
+    <nav class="menu">
+        <ul>
+            <li><a href="/">Главная страница</a></li>
+            <li><a href="/register">Регистрация</a></li>
+            <li><a href="/login">Авторизация</a></li>
+        </ul>
+    </nav>
+    <h1>Авторизация</h1>
+    <div id="app">
+        <% if(errors){ %>
+            <p class="error-msg <%= !success?'bad':'success'%>">
+                <%= errors %>
+            </p>
+        <% } %>
+        <form action="/login" method="post">
+            <div class="container">
+                <label for="login"><b>Логин</b></label>
+                <input type="text" placeholder="Введите логин" name="login" required>
+                <label for="psw"><b>Пароль</b></label>
+                <input type="password" placeholder="Введите пароль" name="psw" required>
+                <hr>
+                <button type="submit" class="actionbtn">Войти</button>
+            </div>
+        </form>
+    </div>
+    <script src="client.js"></script>
+</body>
+
+</html>
