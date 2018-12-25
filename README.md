@@ -16,11 +16,11 @@ UPD: добавлена авторизация и сессии, немного �
             client.js
             /css
             	style.css
-            /views
-                404.html
-                index.html
-                register.html
-                login.html
+        /views
+            404.html
+            index.html
+            register.html
+            login.html
         readme.md
 ```
 

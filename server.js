@@ -29,7 +29,7 @@ app.use(expressSession({
     maxAge: new Date(Date.now() + 3600000),
     expires: new Date(Date.now() + 3600000)
 }))
-app.set('views', __dirname + '/public/views')
+app.set('views', __dirname + '/views')
 app.engine('html', ejs.renderFile)
 app.set('view engine', 'html')
 // GET & POST запросы
