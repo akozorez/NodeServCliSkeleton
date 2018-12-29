@@ -20,7 +20,7 @@ h1 {
     margin: 0 0 0 0;
     background-color: #2f2f2f;
     color: #cacaca;
-    padding: 75px;
+    padding: 100px 0px;
     text-transform: lowercase;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, .15);
 }
@@ -99,8 +99,8 @@ hr {
     top: 0;
     right: -100vh;
     transition: right .75s ease-in-out;
-    height:90px;
-    z-index:999;
+    height: 90px;
+    z-index: 999;
 }
 
 .pinj-bird::before,

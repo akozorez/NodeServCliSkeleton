@@ -33,8 +33,9 @@
     </nav>   
 
     <h1><%= title %></h1> 
-    <% if(errors){ %>
-
+    <% 
+    if(errors){ 
+    %>
     <div id="error_box" class="pinj-bird <%= !success?'error':'success'%>">
         <p class="message-p"><%= errors %></p>
     </div>

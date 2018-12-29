@@ -1,8 +1,9 @@
-import { 
-	pinjbird,
-	XMLHttpReq,
-	nullORjson
-} from '/assets/js/beautiful.js'
+import {
+    pinjbird,
+    XMLHttpReq,
+    nullORjson
+}
+from '/assets/js/beautiful.js'
 
 let bird = new pinjbird(250, 2500, 1000)
 bird.animate('#error_box')

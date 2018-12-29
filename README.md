@@ -37,6 +37,7 @@ $ npm run server
 
 ```
     /pinj-bird
+        /web - роутинг сайта, личного кабинета
         /layouts - шаблоны шапки и подвала     
         /views - вьюхи в html + ejs   
         /public
