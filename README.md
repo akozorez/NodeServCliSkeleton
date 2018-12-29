@@ -1,5 +1,7 @@
 # Pinj-bird
 
+![Pinj-bird](https://raw.githubusercontent.com/seijuroseta/pinj-bird/master/public/assets/img/mstile-150x150.png)
+
 Скелет клиент-серверного приложения c регистрацией и личным кабинетом на mongodb 
 
 Быстрое начало для ваших лабораторных по Nodejs 
@@ -58,5 +60,3 @@ $ npm run server
         package.json
 ```
 
-ISC
-----
