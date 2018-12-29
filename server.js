@@ -30,8 +30,7 @@ app.use(expressSession({
     expires: new Date(Date.now() + 3600000)
 }))
 app.set('views', __dirname + '/views')
-app.engine('html', ejs.renderFile)
-app.set('view engine', 'html')
+app.set('view engine', 'ejs')
 
 // Создание сервера
 app.listen(server_port, () => {
