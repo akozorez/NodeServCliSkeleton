@@ -1,6 +1,5 @@
 # Pinj-bird
-
-![Pinj-bird](https://raw.githubusercontent.com/seijuroseta/pinj-bird/master/public/assets/img/mstile-150x150.png)
+![Pinj-bird](https://raw.githubusercontent.com/seijuroseta/pinj-bird/master/public/assets/img/android-chrome-96x96.png)
 
 Скелет клиент-серверного приложения c регистрацией и личным кабинетом на mongodb 
 
@@ -38,25 +37,15 @@ $ npm run server
 
 ```
     /pinj-bird
-        /layouts
-            footer.ejs
-            header.ejs
+        /layouts - шаблоны шапки и подвала     
+        /views - вьюхи в html + ejs   
         /public
-            /assets
-                /css
-                    style.css
-                /img
-                /js
-                    beautiful.js
-            client.js
-            favicon.ico
-        /views
-            404.html
-            index.html
-            register.html
-            login.html    
-        README.md
-        server.js
-        package.json
+            client.js - для запросов на сервер  
+        /public/assets
+            /css - стили
+            /img - картинки
+            /js - модули для клиента
+        server.js - сервер
+        package.json - зависимости
 ```
 
