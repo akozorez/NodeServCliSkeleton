@@ -28,7 +28,6 @@ $ npm run server
 ```sh
 Это работает: http://localhost:3000
 Коллекция users создана
-Коллекция hello создана
 Аккаунт admin создан
 
 ```
