@@ -1,34 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Главная - NodeServCliSkeleton</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body data-page-name="homepage">
-    <nav class="menu">
-        <ul>
-            <li><a href="/">Главная страница</a></li>
-            <% if(!logined){ %>
-                <li><a href="/register">Регистрация</a></li>
-                <li><a href="/login">Авторизация</a></li>
-            <% }else{ %>
-                    <li><a href="/logout">Выйти</a></li>
-            <% } %>
-        </ul>
-    </nav>
-    <h1>Главная страница</h1>
+<% include ../layouts/header.ejs %>
     <div id="app">
-        <% if(errors){ %>
-            <p class="error-msg <%= !success?'bad':'success'%>">
-                <%= errors %>
-            </p>
-        <% } %>
+    <% if(!logined) { %> 
+    <p>Добро пожаловать, войдите в систему!</p>
+    <% } else { %>
+    <p>Добро пожаловать, <strong><%= my_login %></strong>!</p>
+    <% } %>
     </div>
-    <script src="client.js"></script>
-</body>
 
-</html>
+    <script src="client.js" type="module"></script>
+<% include ../layouts/footer.ejs %>

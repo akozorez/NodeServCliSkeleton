@@ -1,45 +1,54 @@
-# NodeServCliSkeleton
+# Pinj-bird
 
-Скелет клиент-серверного приложения c mongodb и комментариями
+Скелет клиент-серверного приложения c регистрацией и личным кабинетом на mongodb 
 
 Быстрое начало для ваших лабораторных по Nodejs 
 
-UPD: добавлена авторизация и сессии, немного поменял стили ;)
+UPD: добавлена pinj-птичка для ошибок, немного поменял стили и код ;)
 
-#### Структура скелета
+#### Структура приложения
 
 ```
-    /NodeServCliSkeleton
-        server.js
-        package.json
+    /pinj-bird
+        /layouts
+            footer.ejs
+            header.ejs
         /public
+            /assets
+                /css
+                    style.css
+                /img
+                /js
+                    beautiful.js
             client.js
-            /css
-            	style.css
+            favicon.ico
         /views
             404.html
             index.html
             register.html
-            login.html
-        readme.md
+            login.html    
+        README.md
+        server.js
+        package.json
 ```
 
 ### Установка
 Необходим [Nodejs](https://nodejs.org/en/download/) стабильной версии
+
 Необходим [MongoDB](https://docs.mongodb.com/manual/installation/) стабильной версии
 
 
 ```sh
-$ cd NodeServCliSkeleton
+$ cd pinj-bird/
 $ npm install
 ```
 
 ### Запуск
 ```sh
-$ npm run app
+$ npm run server
 ```
 
-Если все запустилось без ошибок, то лог терминала будет такой:
+При удачном первом запуске лог терминала будет такой:
 
 ```sh
 Это работает: http://localhost:3000

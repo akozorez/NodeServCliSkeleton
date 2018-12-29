@@ -1,7 +1,7 @@
 {
-  "name": "NodeServCliSkeleton",
+  "name": "Pinj-bird",
   "version": "1.0.0",
-  "description": "Client-Server Application Skeleton with MongoDB for university labs",
+  "description": "Nodejs template application with auth ( on mongodb )",
   "main": "server.js",
   "author": "me",
   "license": "ISC",
@@ -12,6 +12,6 @@
     "mongodb": "^3.0.0"
   },
   "scripts": {
-    "app": "node server.js"
+    "server": "node server.js"
   }
 }

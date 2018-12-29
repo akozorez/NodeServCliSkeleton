@@ -1,21 +1,21 @@
 // Подключение пакетов/зависимостей
-var express = require('express');
-var bodyParser = require('body-parser');
-var ejs = require('ejs');
-var fs = require('fs');
-var path = require('path');
-var MongoClient = require('mongodb').MongoClient;
-var ObjectId = require('mongodb').ObjectID;
-var expressSession = require('express-session');
+let express = require('express');
+let bodyParser = require('body-parser');
+let ejs = require('ejs');
+let fs = require('fs');
+let path = require('path');
+let MongoClient = require('mongodb').MongoClient;
+let ObjectId = require('mongodb').ObjectID;
+let expressSession = require('express-session');
 // Инициализация конфигурации
-var assets = path.join(__dirname, '.', 'public');
-var charset = 'utf8';
-var app = express();
-var server_port = process.env.PORT || 3000;
-var server_name = 'localhost';
-var db_port = 27017;
-var db_url = 'mongodb://' + server_name + ':' + db_port + '/';
-var db_;
+let assets = path.join(__dirname, '.', 'public');
+let charset = 'utf8';
+let app = express();
+let server_port = process.env.PORT || 3000;
+let server_name = 'localhost';
+let db_port = 27017;
+let db_url = 'mongodb://' + server_name + ':' + db_port + '/';
+let db_;
 // Подключение конфигурации
 app.use(bodyParser.urlencoded({
     extended: !1
@@ -35,34 +35,37 @@ app.set('view engine', 'html')
 // GET & POST запросы
 app.get('/', (req, res, next) => {
     console.log('[GET] /')
-    var err = req.session.errors;
+    let err = req.session.errors;
     if (err) req.session.errors = null;
     res.render('index', {
+        title: 'Главная страница',
         success: req.session.success,
         errors: err,
-        logined: req.session.logined
+        logined: req.session.logined,
+        my_login: req.session.login
     })
 })
 app.get('/hello', (req, res, next) => {
     console.log('[GET] /hello')
-    // Поиск в коллекции объекта с data
-    var data = {
+    // Поиск в коллекции объекта с search
+    var search = {
         type: 'string'
     };
-    db_.collection('hello').findOne(data, (err, response) => {
+    db_.collection('hello').findOne(search, (err, response) => {
         if (err) {
             console.log(err);
             return res.status(500)
         }
-        res.status(200).send(response.message)
+        res.status(200).send(response)
     })
 })
 app.get('/register', (req, res, next) => {
     console.log('[GET] /register')
     if (!req.session.logined) {
-        var err = req.session.errors;
+        let err = req.session.errors;
         if (err) req.session.errors = null;
         res.render('register', {
+            title: 'Регистрация',
             success: req.session.success,
             errors: err,
             logined: req.session.logined
@@ -93,7 +96,7 @@ app.post('/register', (req, res, next) => {
             req.session.success = !1;
             res.redirect('/register')
         } else {
-            var search = {
+            let search = {
                 login: login
             };
             db_.collection('users').findOne(search, (err, data) => {
@@ -106,11 +109,11 @@ app.post('/register', (req, res, next) => {
                     req.session.success = !1;
                     res.redirect('/register')
                 } else {
-                    var data = {
+                    var user = {
                         login: login,
                         password: psw
                     };
-                    db_.collection('users').insertOne(data, (err, result) => {
+                    db_.collection('users').insertOne(user, (err, result) => {
                         if (err) {
                             console.log(err);
                             return res.status(500)
@@ -128,9 +131,10 @@ app.post('/register', (req, res, next) => {
 app.get('/login', (req, res, next) => {
     console.log('[GET] /login')
     if (!req.session.logined) {
-        var err = req.session.errors;
+        let err = req.session.errors;
         if (err) req.session.errors = null;
         res.render('login', {
+            title: 'Авторизация',
             success: req.session.success,
             errors: err,
             logined: req.session.logined
@@ -146,7 +150,7 @@ app.post('/login', (req, res, next) => {
     const success_login = 'Вы успешно вошли в систему';
     // Авторизация
     ((login, psw) => {
-        var search = {
+        let search = {
             login: login
         };
         db_.collection('users').findOne(search, (err, data) => {
@@ -162,8 +166,9 @@ app.post('/login', (req, res, next) => {
                     res.redirect('/login')
                 } else {
                     req.session.errors = success_login;
-                    req.session.success = !0;
-                    req.session.logined = !0;
+                    req.session.success = !0
+                    req.session.logined = !0
+                    req.session.login = login
                     res.redirect('/')
                 }
             } else {
@@ -187,8 +192,16 @@ app.get('/logout', (req, res, next) => {
 })
 // Редирект на 404, после - не должно быть GET-ов
 app.get('*', (req, res, next) => {
-    console.log('[GET] /*?404')
-    res.status(404).render('404.html')
+    console.log('[GET] ' + req.url + ' --> [GET] /404')
+    let err = req.session.errors;
+    if (err) req.session.errors = null;
+    res.status(404).render('404.html', 
+        {
+            title: 'Страница не найдена',
+            success: req.session.success,
+            errors: err,
+            logined: req.session.logined
+        })
 })
 // Создание сервера на заданном порте
 app.listen(server_port, () => {
@@ -208,11 +221,11 @@ app.listen(server_port, () => {
             if (!err && count === 0) {
                 // Вставка в коллекцию объекта data 
                 // (Коллекция автоматически создается при объявлении)
-                var data = {
+                let hello = {
                     type: 'string',
                     message: 'приветики пистолетики!'
                 };
-                db_.collection('hello').insertOne(data, (err, result) => {
+                db_.collection('hello').insertOne(hello, (err, result) => {
                     if (err) {
                         console.log(err);
                         return res.status(500)
@@ -247,11 +260,11 @@ app.listen(server_port, () => {
                         },
                         validationAction: "warn"
                     })
-                    var data = {
+                    let admin = {
                         login: 'admin',
                         password: 'admin'
                     };
-                    db_.collection('users').insertOne(data, (err, result) => {
+                    db_.collection('users').insertOne(admin, (err, result) => {
                         if (err) {
                             console.log(err);
                             return res.status(500)

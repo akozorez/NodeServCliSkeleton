@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+    <link rel="manifest" href="/assets/img/site.webmanifest">
+    <link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#555555">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#f7f7ff">
+    <meta name="msapplication-config" content="/assets/img/browserconfig.xml">
+    <meta name="theme-color" content="#f7f7ff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="/">Главная страница</a></li>
+            <% if(!logined){ %>
+            <li><a href="/register">Регистрация</a></li>
+            <li><a href="/login">Авторизация</a></li>
+            <% }else{ %>
+            <li><a href="/logout">Выйти</a></li>
+            <% } %>
+        </ul>
+    </nav>   
+
+    <h1><%= title %></h1> 
+    <% if(errors){ %>
+
+    <div id="error_box" class="pinj-bird <%= !success?'error':'success'%>">
+        <p class="message-p"><%= errors %></p>
+    </div>
+
+    <% } %>
