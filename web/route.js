@@ -21,7 +21,7 @@ module.exports = function(db_) {
         console.log('[GET] ' + req.url + ' --> [GET] /404')
         let err = req.session.errors
         if (err) req.session.errors = null
-        res.status(404).render('404.html', {
+        res.status(404).render('404', {
             title: 'Страница не найдена',
             success: req.session.success,
             errors: err,
